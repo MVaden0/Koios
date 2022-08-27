@@ -28,12 +28,12 @@ q = List(
 
 q.draw()
 
-a = Text(text="fuck eggs", color='blue', formatting='blink')
+a = Text(text="sdfsd", color='blue', formatting='blink')
 
 time.sleep(1.0)
 erase_last_n_rows(3)
 #sys.stdout.flush()
-print("asdf")
+print(a)
 print("dfs")
 print("fs")
 print("asdfsda")
