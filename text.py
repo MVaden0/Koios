@@ -18,6 +18,6 @@ class Text:
 
     def __str__(self):
         _text_formatting = f'{self.color}{self.bg_color}{self.formatting}'
-        _end = get_base_config('formats', 'en')
+        _end = get_base_config('formats', 'end')
 
         return f'{_text_formatting}{self.text}{_end}'
