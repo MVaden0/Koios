@@ -3,6 +3,7 @@ import sys
 
 from config import get_config
 from terminalutilities import erase_last_n_rows, hide_cursor, show_cursor, move_cursor_up, move_cursor_down
+from characters import Character
 
 
 class Formatting:
@@ -61,7 +62,7 @@ class Select:
 
         for i in range(0, len(self.answers)):
             if i == self.selected_index:
-                print(self.selected_formatting.apply(f' > {self.answers[i]}'))
+                print(self.selected_formatting.apply(f' {Character("right arrow")} {self.answers[i]}'))
 
             else:
                 print(self.answer_formatting.apply(f'   {self.answers[i]}'))
