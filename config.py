@@ -1,16 +1,16 @@
 from exceptions import InvalidTextFormattingException
 
 
-def get_base_config(category, key):
+def get_config(category, key):
     # validate category
-    _categories = BASE_CONFIG.keys()
+    _categories = CONFIG.keys()
     if category not in _categories:
         raise InvalidTextFormattingException(
             f'\'{category}\' is not a valid category'
         )
 
     # get sub-level config based on category
-    _categorical_config = BASE_CONFIG[category]
+    _categorical_config = CONFIG[category]
 
     # validate key
     _keys = _categorical_config.keys()
@@ -23,7 +23,7 @@ def get_base_config(category, key):
     return f'{_categorical_config[key]}'
     
 
-BASE_CONFIG = {
+CONFIG = {
     'colors': {
         'black'         : '\33[30m',
         'grey'          : '\33[90m',
@@ -50,14 +50,14 @@ BASE_CONFIG = {
         'yellow'        : '\33[103m',
         'blue'          : '\33[104m',
         'violet'        : '\33[105m',
-        'beige'         : '\33[106m',
+        'cyan'          : '\33[106m',
         'white'         : '\33[107m',
         'dark red'      : '\33[41m',
         'dark green'    : '\33[42m',
         'dark yellow'   : '\33[43m',
         'dark blue'     : '\33[44m',
         'dark violet'   : '\33[45m',
-        'dark beige'    : '\33[46m',
+        'dark cyan'     : '\33[46m',
         'dark white'    : '\33[47m'
     },
     'formats': {

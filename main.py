@@ -2,39 +2,22 @@ from email import message
 import sys
 import time
 import os
-from text import Text
+from components import Formatting, Text, Select
 from terminalutilities import *
 
-
-class List:
-    def __init__(self, prompt, answers):
-        self.prompt = prompt
-        self.answers = answers
-
-    def draw(self):
-        print(f'{self.prompt}')
-
-        for answer in self.answers:
-            print(answer)
-
-q = List(
-    prompt='What action will you like to perform?',
-    answers=[
+b = Text(text="sdfsd", formatting=Formatting(color='blue', formatting='italic'))
+a = Select(
+    'What action would you like to perform?',
+    [
         'Get information',
         'Set information',
-        'Overwrite file'
+        'Create file'
     ]
 )
 
-q.draw()
-
-a = Text(text="sdfsd", color='blue', formatting='blink')
-
-time.sleep(1.0)
-erase_last_n_rows(3)
+a.output()
+#time.sleep(1.0)
+#erase_last_n_rows(3)
 #sys.stdout.flush()
-print(a)
-print("dfs")
-print("fs")
-print("asdfsda")
+
 
