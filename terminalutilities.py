@@ -48,3 +48,10 @@ def erase_line():
 def erase_last_n_rows(rows): 
     sys.stdout.write(f'\x1b[{rows}A')
     sys.stdout.write('\x1b[0J')
+
+def hide_cursor():
+    sys.stdout.write(f'\033[?25l')
+
+def show_cursor():
+    sys.stdout.write(f'\033[?25h')
+    

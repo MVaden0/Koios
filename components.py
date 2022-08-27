@@ -1,4 +1,8 @@
+from readchar import readkey, key
+import sys
+
 from config import get_config
+from terminalutilities import hide_cursor, show_cursor, move_cursor_up
 
 
 class Formatting:
@@ -46,16 +50,28 @@ class Select:
         ):
         self.prompt = prompt
         self.answers = answers
+        self.answer_count = len(answers)
         self.prompt_formatting = prompt_formatting
         self.answer_formatting = answer_formatting 
         self.selected_formatting = selected_formatting
 
-    def output(self):
+    def _output(self, selected_index):
         print(self.prompt_formatting.apply(self.prompt))
 
         for i in range(0, len(self.answers)):
-            if i == 0:
-                print(self.selected_formatting.apply(f'> {self.answers[i]}'))
+            if i == selected_index:
+                print(self.selected_formatting.apply(f' > {self.answers[i]}'))
 
             else:
-                print(self.answer_formatting.apply(f'  {self.answers[i]}'))
+                print(self.answer_formatting.apply(f'   {self.answers[i]}'))
+
+    def output(self):
+        hide_cursor()
+
+        self._output(0)
+
+        a = readkey()
+
+        show_cursor()
+
+
