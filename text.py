@@ -40,12 +40,11 @@ class Formatting:
     formats = {
         'end'       : '\33[0m',
         'bold'      : '\33[1m',
-        'italic'    : '\33[2m',
-        'url'       : '\33[3m',
-        'blink'     : '\33[4m',
-        'blink2'    : '\33[5m',
-        'selected'  : '\33[6m',
-        'bold'      : '\33[7m'
+        'italic'    : '\33[3m',
+        'url'       : '\33[4m',
+        'blink'     : '\33[5m',
+        'blink2'    : '\33[6m',
+        'selected'  : '\33[7m'
     }
 
 
