@@ -43,3 +43,29 @@ class Color:
     beige_bg2  = '\33[106m'
     white_bg2  = '\33[107m'
 
+
+class Formatting:
+    end         = '\33[0m'
+    bold        = '\33[1m'
+    italic      = '\33[2m'
+    url         = '\33[3m'
+    blink       = '\33[4m'
+    blink2      = '\33[5m'
+    selected    = '\33[6m'
+    bold        = '\33[7m'
+
+
+class Text:
+    def __init__(self, text, color=None, formatting=None):
+        self.text = text
+        self.color = ''
+        self.formatting = ''
+
+        if color:
+            self.color = color
+
+        if formatting:
+            self.formatting = formatting
+
+    def __str__(self):
+        return f'{self.color}{self.formatting}{self.text}{Formatting.end}'
