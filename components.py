@@ -2,7 +2,7 @@ from readchar import readkey, key
 import sys
 
 from config import get_config
-from terminalutilities import hide_cursor, show_cursor, move_cursor_up
+from terminalutilities import erase_last_n_rows, hide_cursor, show_cursor, move_cursor_up, move_cursor_down
 
 
 class Formatting:
@@ -51,27 +51,56 @@ class Select:
         self.prompt = prompt
         self.answers = answers
         self.answer_count = len(answers)
+        self.selected_index = 0
         self.prompt_formatting = prompt_formatting
         self.answer_formatting = answer_formatting 
         self.selected_formatting = selected_formatting
 
-    def _output(self, selected_index):
+    def _output(self):
         print(self.prompt_formatting.apply(self.prompt))
 
         for i in range(0, len(self.answers)):
-            if i == selected_index:
+            if i == self.selected_index:
                 print(self.selected_formatting.apply(f' > {self.answers[i]}'))
 
             else:
                 print(self.answer_formatting.apply(f'   {self.answers[i]}'))
 
+        move_cursor_up(1)
+
     def output(self):
         hide_cursor()
 
-        self._output(0)
+        self._output()
 
-        a = readkey()
+        while(True):
+            _action = readkey()
 
+            if _action == key.ENTER:
+                move_cursor_down(1)
+
+                break
+
+            elif _action == key.UP:
+                erase_last_n_rows(3)
+
+                if self.selected_index == 0:
+                    self.selected_index = self.answer_count - 1
+                
+                else:
+                    self.selected_index -= 1
+
+                self._output()
+
+            elif _action == key.DOWN:
+                erase_last_n_rows(3)
+
+                if self.selected_index == self.answer_count - 1:
+                    self.selected_index = 0
+                
+                else:
+                    self.selected_index += 1
+
+                self._output()
+                
         show_cursor()
-
-
