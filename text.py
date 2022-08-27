@@ -1,4 +1,4 @@
-class Formatting:
+class TextFmt:
     colors = {
         'black'         : '\33[30m',
         'grey'          : '\33[90m',
@@ -52,7 +52,7 @@ class Text:
     def __init__(self, text, color=None, background_color=None, formatting=None):
         self.text = text
         self.color = ''
-        self.background_color = ''
+        self.bg_color = ''
         self.formatting = ''
 
         if color:
@@ -65,5 +65,4 @@ class Text:
             self.formatting = Formatting.formats[formatting]
 
     def __str__(self):
-
-        return f'{self.color}{self.background_color}{self.formatting}{self.text}{Formatting.formats["end"]}'
+        return f'{self.color}{self.bg_color}{self.formatting}{self.text}{Formatting.formats["end"]}'
